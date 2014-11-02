@@ -11,21 +11,40 @@
 <body>
 	
 	<div class="snowContainer">
-		
-		<h1>Taylor Swift Ipsum</h1>
-		
 		<div id="lorem-forem">
+
 			<form>
+				<h1>Taylor Swift Ipsum</h1>
+
 				Generate <input type="text" id="numberWords" placeholder="13"> words of Taylor Swift Ipsum.
-				<br />
+
+				<br /><br />
+
 				With lyrics from: 
-				<input style="display:none;"class="album" type="checkbox" value="ts" checked>
-				<input class="album" type="checkbox" value="nineteenEightyNine"><label>1989</label>
-				<input class="album" type="checkbox" value="red"><label>Red</label>
-				<input class="album" type="checkbox" value="speakNow"><label>Speak Now</label>
-				<input class="album" type="checkbox" value="fearless"><label>Fearless</label>
-				<input class="album" type="checkbox" value="taylorSwift"><label>Taylor Swift</label>
-				<br />
+				<input class="album hidden" type="checkbox" value="ts" checked>
+				<label>
+					<input class="album hidden" type="checkbox" value="nineteenEightyNine">
+					<span class="album-title">1989</span>
+				</label>
+				<label>
+					<input class="album hidden" type="checkbox" value="red">
+					<span class="album-title">Red</span>
+				</label>
+				<label>
+					<input class="album hidden" type="checkbox" value="speakNow">
+					<span class="album-title">Speak Now</span>
+				</label>
+				<label>
+					<input class="album hidden" type="checkbox" value="fearless">
+					<span class="album-title">Fearless</span>
+				</label>
+				<label>
+					<input class="album hidden" type="checkbox" value="taylorSwift">
+					<span class="album-title">Taylor Swift</span>
+				</label>
+				
+				<br /><br />
+
 				With a side of: 
 				<input class="album" type="checkbox" value="hashtags"><label>Taylor's Tumblr #hashtags</label>
 			</form>
@@ -36,7 +55,26 @@
 			<div id="lorem-submitum">Let's<br />Go!</div>
 		</div><!-- end gify-container -->
 
-		<div id="lorem-result"></div>
+		<div id="lorem-result">
+			Fill out the form above & hit the cat button to generate Taylor Swift Ipsum!
+		</div>
+
+		<div class="api-credits">
+			<p>Taylor Swift Ipsum: A cool-ass website made by Emily B. O'Brien</p>
+			<ul class="logos">
+				<li>
+					<img src="imgs/Giphy_API_Logo_ForWhite_Trans.gif" />
+				</li>
+				<li>
+					 and
+				</li>
+				<li>
+					<img src="imgs/tumblr_logotype_blue_28.png" />
+				</li>
+			</ul>
+			<br />
+			<p class="tumblr">This website uses the Tumblr application programming interface but is not endorsed or certified by Tumblr, Inc. All of the Tumblr logos and trademarks displayed on this [application/service] are the property of Tumblr, Inc.</p>
+		</div>
 
 	</div><!--end snowContainer-->
 
