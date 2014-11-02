@@ -123,9 +123,9 @@
 			combinedWords = getAlbums();
 
 			for(var i = 0; i < wordCount; i ++){
-				//get a random number within the range of the combinedWords array
-				var randomNumber = Math.round(Math.random() * combinedWords.length); 
-				//TODO: REMOVE THE CHOSEN WORD SO WE DON'T HAVE ANY DUPLICATE WORDS
+				//get a new random number each time within the range of the combinedWords array
+				var randomNumber = Math.round(Math.random() * combinedWords.length);
+
 				storeWords.push(combinedWords[randomNumber]);
 			}
 
@@ -153,10 +153,12 @@
 
 			while((counter >= 0) && (counter < (wordCount - 11))){
 				var randomNumber = parseInt(getRandomNumberBtwn(5, 11));
-				counter = counter + randomNumber; //keep track of what index we're at and make sure it never gets bigger than the array length
+				counter = counter + randomNumber; 
+				//keep track of what index we're at and make sure it never gets bigger than the array length
 
 				finalWords[counter] = finalWords[counter] + '.'; // add punctuation
-				finalWords[counter + 1] = (finalWords[counter + 1].charAt(0).toUpperCase()) + (finalWords[counter + 1].slice(1)); 
+				finalWords[counter + 1] = (finalWords[counter + 1].charAt(0).toUpperCase()) + (finalWords[counter + 1].slice(1));
+
 				//capitalize next letter
 				//TODO: if it's a hastag, capitalize the one after it
 			}
