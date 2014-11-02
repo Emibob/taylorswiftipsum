@@ -1,0 +1,232 @@
+<html>
+<head>
+<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+<link rel="stylesheet" type="text/css" href="css/main.css">
+
+<link href='http://fonts.googleapis.com/css?family=Titillium+Web' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Rock+Salt' rel='stylesheet' type='text/css'>
+
+<script src="http://underscorejs.org/underscore.js"></script>
+</head>
+<body>
+	
+	<div class="snowContainer">
+		
+		<h1>Taylor Swift Ipsum</h1>
+		
+		<div id="lorem-forem">
+			<form>
+				Generate <input type="text" id="numberWords" placeholder="13"> words of Taylor Swift Ipsum.
+				<br />
+				With lyrics from: 
+				<input style="display:none;"class="album" type="checkbox" value="ts" checked>
+				<input class="album" type="checkbox" value="nineteenEightyNine"><label>1989</label>
+				<input class="album" type="checkbox" value="red"><label>Red</label>
+				<input class="album" type="checkbox" value="speakNow"><label>Speak Now</label>
+				<input class="album" type="checkbox" value="fearless"><label>Fearless</label>
+				<input class="album" type="checkbox" value="taylorSwift"><label>Taylor Swift</label>
+				<br />
+				With a side of: 
+				<input class="album" type="checkbox" value="hashtags"><label>Taylor's Tumblr #hashtags</label>
+			</form>
+		</div><!-- end lorem-forem -->
+
+		<div class="gify-container">
+			<div class="gify"></div>
+			<div id="lorem-submitum">Let's<br />Go!</div>
+		</div><!-- end gify-container -->
+
+		<div id="lorem-result"></div>
+
+	</div><!--end snowContainer-->
+
+	<script type="text/javascript" src="js/lingo.js"></script><!-- our arrays -->
+	<script>
+		document.getElementById('lorem-submitum').addEventListener('click', generateIpsum, false);
+		document.getElementById('lorem-submitum').addEventListener('click', initEasterEggs, false);
+
+		function getNumberWords(){
+			var defaultNumber, inputNumber;
+
+			defaultNumber = 13;
+			inputNumber = document.getElementById('numberWords').value || defaultNumber;
+
+			return inputNumber;
+		};
+
+		function getAlbums(){
+			var albums, combinedWords, allAlbums;
+
+			albums = [];
+			combinedWords = combinedWords || [];
+			allAlbums = $('.album');
+
+			//get all the album values that are checked
+			for(var j = 0; j < allAlbums.length; j ++){
+				if(allAlbums[j].checked === true){
+					albums.push(allAlbums[j].value);
+				}
+			}
+
+			//concat the selected arrays
+			for(var i = 0; i < albums.length; i ++){
+				//holder = (lingo[firstAlbum]).concat(lingo[albums[i]]);
+				combinedWords = combinedWords.concat(lingo[albums[i]]);
+			}
+
+			return combinedWords;
+		}
+
+		function generateIpsum(){
+			var storeWords, wordCount, combinedWords, finalWords, output;
+
+			storeWords = [];
+			wordCount = getNumberWords();
+			combinedWords = getAlbums();
+
+			for(var i = 0; i < wordCount; i ++){
+				//get a random number within the range of the combinedWords array
+				var randomNumber = Math.round(Math.random() * combinedWords.length); 
+				//TODO: REMOVE THE CHOSEN WORD SO WE DON'T HAVE ANY DUPLICATE WORDS
+				storeWords.push(combinedWords[randomNumber]);
+			}
+
+			finalWords = storeWords.join(' ').split(' ').splice(0, wordCount);
+			highlightHashtags(finalWords);
+			output = addGrammar(wordCount, finalWords).join(' ');
+
+			displayWords('lorem-result', output);
+		}
+
+		function highlightHashtags(textToParse){ //where textToParse is an array
+			//TODO: add links?
+			for(var z = 0; z < textToParse.length; z++){
+				if(textToParse[z].match(/#\w+/g)){
+					textToParse[z] = '<span class="hashie">' + textToParse[z] + '</span>';
+				}
+			}
+		}
+
+		//TODO: get wordcount of an array item by incrementing for each space
+
+		function addGrammar(wordCount, finalWords){
+			wordCount = parseInt(wordCount);
+			var counter = 0;
+
+			while((counter >= 0) && (counter < (wordCount - 11))){
+				var randomNumber = parseInt(getRandomNumberBtwn(5, 11));
+				counter = counter + randomNumber; //keep track of what index we're at and make sure it never gets bigger than the array length
+
+				finalWords[counter] = finalWords[counter] + '.'; // add punctuation
+				finalWords[counter + 1] = (finalWords[counter + 1].charAt(0).toUpperCase()) + (finalWords[counter + 1].slice(1)); 
+				//capitalize next letter
+				//TODO: if it's a hastag, capitalize the one after it
+			}
+
+			finalWords[0] = finalWords[0].charAt(0).toUpperCase() + finalWords[0].slice(1);
+			return finalWords;
+		}
+
+		function getRandomNumberBtwn(min, max){
+			var seed = Math.round(Math.random() * max);
+			var result;
+
+			if(seed < min){
+				result = getRandomNumberBtwn(min, max);
+			}
+			else{
+				result = seed;
+			}
+
+			return result;
+		}
+
+		function displayWords(id, words){
+			var location = document.getElementById(id);
+			location.innerHTML = words;
+		}
+
+ 
+		$.ajax({
+        url: 'http://api.giphy.com/v1/gifs/search?q=taylor+Swift&limit=100&api_key=dc6zaTOxFJmzC',
+        dataType: 'json',
+        success: function(result){
+        	//TODO: refactor this
+        	var randomNumber = Math.round(Math.random() * result.data.length);
+        	var gifUrl = result.data[randomNumber].images.fixed_height.url;
+        	var gifWidth = result.data[randomNumber].images.fixed_height.width;
+        	var gifHeight = result.data[randomNumber].images.fixed_height.height;
+
+        	var containerWidth = (parseInt(gifWidth) + 250);
+        	var containerHeight = (parseInt(gifHeight) + 50);
+        	var calcMarginLeft = (containerWidth / 2) - (gifWidth / 2) + 'px';
+
+        	var marginLeftGif = (parseInt(gifWidth) + 60) + 'px';
+
+        	$('.gify-container').css('width', containerWidth);
+        	$('.gify-container').css('height', containerHeight);
+
+        	$('.gify').append($('<img>',{id:'gifyimg', src:gifUrl}));
+        	$('#gifyimg').css('margin-left', calcMarginLeft);
+        	$('#lorem-submitum').css('margin-top', (gifHeight - 100));
+        	$('#lorem-submitum').css('margin-left', marginLeftGif);
+        	$('#lorem-submitum').css('display', 'block'); //we don't want this jumping around the page
+        }
+      });
+
+		// $.ajax({
+  //       url: 'http://api.giphy.com/v1/stickers/search?q=taylor+swift&api_key=dc6zaTOxFJmzC',
+  //       dataType: 'json',
+  //       success: function(result){
+
+  //       	console.log(result);
+
+  //       	var randomNumber = Math.round(Math.random() * result.data.length);
+  //       	var gifUrl = result.data[randomNumber].images.fixed_width.url;
+  //       	$('.gify').append($('<img>',{id:'gifysticker', src:gifUrl}));
+  //       }
+  //     });
+
+
+	$.ajax({
+        url: 'http://api.tumblr.com/v2/blog/taylorswift.tumblr.com/posts?api_key=lFtJkzttWGO9Gz1xH6isQNVPidE4xIVV5XqPqzMfTzeg6vfUMw',
+        dataType: 'jsonp',
+        success: function(result){
+          // console.log(result.response);
+
+          var hashTagArray = [];
+
+          	_.each(result.response.posts, function(post){
+          		_.each(post.tags, function(tag){
+
+          			hashTagArray.push('#' + tag);
+
+          		});
+          	});
+          	window.lingo.hashtags = hashTagArray;
+
+        }
+      });
+
+
+
+		//EASTER EGGS
+		var easterEgg = easterEgg || {};
+
+		function initEasterEggs(){
+			easterEgg.counter = easterEgg.counter || 0;
+			easterEgg.counter ++;
+
+			if(easterEgg.counter % 13 === 0){
+				$('.snowContainer').css('background-image', 'url("https://usatlife.files.wordpress.com/2014/08/everswifttumblrcom.gif?w=1000")');//https://usatlife.files.wordpress.com/2014/08/everswifttumblrcom.gif?w=1000
+				$('.snowContainer').addClass('snowing');
+			}
+			if((easterEgg.counter > 13) && (easterEgg.counter % 13 === 1)){
+				$('.snowContainer').removeClass('snowing');
+				$('.snowContainer').css('background-image', '');
+			}
+		}
+	</script>
+
+</body>
+</html>
