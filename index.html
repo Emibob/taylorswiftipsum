@@ -7,12 +7,14 @@
 <link href='http://fonts.googleapis.com/css?family=Rock+Salt' rel='stylesheet' type='text/css'>
 
 <script src="http://underscorejs.org/underscore.js"></script>
+<!--
   /\___/\
  ( o   o )
  (  =^=  ) 
  (        )
  (         )
  (          )))))))))))
+-->
 </head>
 <body>
 	
@@ -86,6 +88,8 @@
 
 	<script type="text/javascript" src="js/lingo.js"></script><!-- our arrays -->
 	<script>
+
+		//EVENT LISTENERS
 		document.getElementById('lorem-submitum').addEventListener('click', generateIpsum, false);
 		document.getElementById('lorem-submitum').addEventListener('click', initEasterEggs, false);
 
@@ -120,7 +124,8 @@
 
 			return combinedWords;
 		}
-
+		
+		//TODO: get wordcount of an array item by incrementing for each space
 		function generateIpsum(){
 			var storeWords, wordCount, combinedWords, finalWords, output;
 
@@ -131,14 +136,16 @@
 			for(var i = 0; i < wordCount; i ++){
 				//get a new random number each time within the range of the combinedWords array
 				var randomNumber = Math.round(Math.random() * combinedWords.length);
-
 				storeWords.push(combinedWords[randomNumber]);
 			}
 
+			//combine storeWords into 1 string to split them by each word, lob off extra words
 			finalWords = storeWords.join(' ').split(' ').splice(0, wordCount);
+			//highlight the hashies
 			highlightHashtags(finalWords);
+			//add grammar
 			output = addGrammar(wordCount, finalWords).join(' ');
-
+			//display them
 			displayWords('lorem-result', output);
 		}
 
@@ -146,12 +153,11 @@
 			//TODO: add links?
 			for(var z = 0; z < textToParse.length; z++){
 				if(textToParse[z].match(/#\w+/g)){
-					textToParse[z] = '<span class="hashie">' + textToParse[z] + '</span>';
+					//TODO: fix this link situation
+					textToParse[z] = '<a href="http://www.tumblr.com/' + textToParse[z] + '" ><span class="hashie">' + textToParse[z] + '</span></a>';
 				}
 			}
 		}
-
-		//TODO: get wordcount of an array item by incrementing for each space
 
 		function addGrammar(wordCount, finalWords){
 			wordCount = parseInt(wordCount);
