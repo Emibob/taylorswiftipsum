@@ -3,7 +3,7 @@
 	letter-spacing: 1px;
 	font-family: 'Titillium Web', sans-serif;
 	font-size: 16px;
-	line-height: 28px;
+	line-height: 24px;
 	margin: 0px;
 	padding: 0px;
 	list-style: none;
@@ -45,10 +45,10 @@ body{
 }
 h1{
 	text-align: center;
-	font-family: 'Rock Salt', cursive;
-	font-size: 40px;
-	padding: 20px;
-	margin: 20px 0px 40px 0px;
+	font-family: 'Hammersmith One', sans-serif;
+	text-transform: uppercase;
+	font-size: 30px;
+	margin: 15px 0px 25px 0px;
 }
 #numberWords{
 	width: 50px;
@@ -61,8 +61,8 @@ h1{
   border:1px solid black;
 }
 #numberWords:focus{
-	border: 1px solid #a110d0;
-	box-shadow: 0 0 5px #a110d0;
+	border: 1px solid #5b5989;
+	box-shadow: 0 0 5px #5b5989;
 }
 ::-webkit-input-placeholder {
    color: #000;
@@ -82,6 +82,7 @@ h1{
 	padding: 20px;
 	width: 70%;
 	margin-left: 15%;
+	overflow: auto;
 }
 .hidden{
 	display: none;
@@ -89,34 +90,31 @@ h1{
 .album-title{
 	background: #000;
 	color: rgba(197,198,222,1);
-	padding: 6px;
+	padding: 3px 6px;
 }
 .album-title:hover{
 	cursor: pointer;
+	background: #5b5989;
 }
 :checked + span {
-  background: #a110d0;
+  background: #5b5989;
 }
 #lorem-submitum{
 	color: #fff;
-	width: 150px;
-	height: 105px;
+	width: 70px;
+	height: 50px;
 	text-align: center;
-	line-height: 40px;
-	padding-top: 40px;
-	font-size: 34px;
+	font-size: 14px;
+	letter-spacing: 1px;
 	text-transform: uppercase;
-	margin: 0px auto;
+	font-family: 'Hammersmith One', sans-serif;
+	background-image: url('../imgs/cat170.png');
+	padding-top: 20px;
 	float: right;
-	font-family: 'Rock Salt', cursive;
-	background-image: url('../imgs/purplecat.png');
-	position: absolute;
-	z-index: 2;
-	display: none;
 }
 #lorem-submitum:hover{
 	cursor: pointer;
-	background-image: url('../imgs/rainbowcat.png');
+	background-image: url('../imgs/cat270.png');
 	color: black;
 }
 #lorem-result{
@@ -126,12 +124,12 @@ h1{
 	color: rgba(197,198,222,1);
 	padding: 20px;
 	margin: 0% 10%;
+	margin-top: 20px;
 }
 .gify-container{
 	width: 800px;
 	height: 300px;
 	margin: 0px auto;
-	margin-top: 30px;
 	display: block;
 }
 .gify{
@@ -140,7 +138,7 @@ h1{
 	float: left;
 }
 .hashie{
-	color: #a110d0;
+	color: #5b5989;
 }
 .api-credits{
 	width: 505px;
@@ -163,4 +161,26 @@ ul.logos{
 	padding: 0px;
 	float: left;
 	font-size: 12px;
+}
+.errorMessage{
+	position: fixed;
+	background-color: red;
+	display: none;
+	font-size: 20px;
+	padding: 10px;
+	width: 100%;
+	text-align: center;
+	z-index: 4;
+}
+.xmashat{
+	position: absolute;
+	z-index: 2;
+	width: 40px;
+	margin: -20px 0px 0px -20px;
+}
+.albumCheckBoxes{
+	display: inline;
+}
+#christmasAlbum .album-title:hover{
+	background-color: red;
 }

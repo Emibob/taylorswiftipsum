@@ -5,6 +5,7 @@
 
 <link href='http://fonts.googleapis.com/css?family=Titillium+Web' rel='stylesheet' type='text/css'>
 <link href='http://fonts.googleapis.com/css?family=Rock+Salt' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Hammersmith+One' rel='stylesheet' type='text/css'>
 
 <script src="http://underscorejs.org/underscore.js"></script>
 <!--
@@ -14,21 +15,32 @@
  (        )
  (         )
  (          )))))))))))
+ taylorswiftipsum
 -->
 </head>
 <body>
 	
+<div class="errorMessage"></div>
+
 	<div class="snowContainer">
 		<div id="lorem-forem">
 
 			<form>
 				<h1>Taylor Swift Ipsum</h1>
 
+				Why be boring when you can be Taylor Swift? If you're working on a project & need some fun loreum ipsum placeholder text, you've come to the right place. Also, if you're bored & looking to entertain yourself this works too.
+				<br /><br />
+
+				<div class="gify-container">
+					<div class="gify"></div>
+				</div>
+
 				Generate <input type="text" id="numberWords" placeholder="13"> words of Taylor Swift Ipsum.
 
 				<br /><br />
 
 				With lyrics from: 
+				<div class="albumCheckBoxes">
 				<input class="album hidden" type="checkbox" value="ts" checked>
 				<label>
 					<input class="album hidden" type="checkbox" value="nineteenEightyNine">
@@ -50,25 +62,24 @@
 					<input class="album hidden" type="checkbox" value="taylorSwift">
 					<span class="album-title">Taylor Swift</span>
 				</label>
+				</div>
 				
 				<br /><br />
 
-				With a side of: 
-				<input class="album" type="checkbox" value="hashtags"><label>Taylor's Tumblr #hashtags</label>
+				<input class="album" type="checkbox" value="hashtags"><label>Use Taylor's Tumblr #hashtags</label>
+
+				<div id="lorem-submitum">Submit</div>
+
 			</form>
 		</div><!-- end lorem-forem -->
-
-		<div class="gify-container">
-			<div class="gify"></div>
-			<div id="lorem-submitum">Let's<br />Go!</div>
-		</div><!-- end gify-container -->
 
 		<div id="lorem-result">
 			Fill out the form above & hit the cat button to generate Taylor Swift Ipsum!
 		</div>
 
 		<div class="api-credits">
-			<p>Taylor Swift Ipsum: A cool-ass website made by Emily B. O'Brien</p>
+			<p>Taylor Swift Ipsum: A super fun experiment by Emily B. O'Brien</p>
+			<br />
 			<ul class="logos">
 				<li>
 					<img src="imgs/Giphy_API_Logo_ForWhite_Trans.gif" />
@@ -96,11 +107,26 @@
 		function getNumberWords(){
 			var defaultNumber, inputNumber;
 
-			defaultNumber = 13;
-			inputNumber = document.getElementById('numberWords').value || defaultNumber;
+			defaultNumber = "13";
+			inputNumber = $('#numberWords').val() || defaultNumber;
+
+			if(inputNumber >= 500000){
+				inputNumber = defaultNumber;
+				showError('Trying to break me like a promise? Please choose a smaller number.');
+			}
+			if(inputNumber.match(/[^0-9]/g)){
+				inputNumber = defaultNumber;
+				showError('Please enter a numeric value');
+			}
 
 			return inputNumber;
 		};
+
+		function showError(errorText){
+			$('.errorMessage').text(errorText)
+				.css('display', 'block')
+				.fadeOut(9000, 'linear');
+		}
 
 		function getAlbums(){
 			var albums, combinedWords, allAlbums;
@@ -125,17 +151,22 @@
 			return combinedWords;
 		}
 		
-		//TODO: get wordcount of an array item by incrementing for each space
 		function generateIpsum(){
-			var storeWords, wordCount, combinedWords, finalWords, output;
+			var storeWords, wordCount, combinedWords, finalWords, output, counter;
+			
+			// var start = new Date().getTime();
+			// var elapsed;
 
+			counter = 0;
 			storeWords = [];
 			wordCount = getNumberWords();
 			combinedWords = getAlbums();
 
-			for(var i = 0; i < wordCount; i ++){
+			while(counter < wordCount){
 				//get a new random number each time within the range of the combinedWords array
-				var randomNumber = Math.round(Math.random() * combinedWords.length);
+				var randomNumber = Math.round(Math.random() * (combinedWords.length));
+				var spaces = combinedWords[randomNumber].match(/\s/g) || []; //returns array of spaces
+				counter = counter + (spaces.length + 1);
 				storeWords.push(combinedWords[randomNumber]);
 			}
 
@@ -147,6 +178,9 @@
 			output = addGrammar(wordCount, finalWords).join(' ');
 			//display them
 			displayWords('lorem-result', output);
+
+			// elapsed = new Date().getTime() - start;
+			// console.log('Time elapsed for generateIpsum: ', elapsed, 'with wordcount of: ', wordCount);
 		}
 
 		function highlightHashtags(textToParse){ //where textToParse is an array
@@ -199,6 +233,7 @@
 		}
 
  
+ 		//GIFY
 		$.ajax({
         url: 'http://api.giphy.com/v1/gifs/search?q=taylor+Swift&limit=100&api_key=dc6zaTOxFJmzC',
         dataType: 'json',
@@ -209,7 +244,7 @@
         	var gifWidth = result.data[randomNumber].images.fixed_height.width;
         	var gifHeight = result.data[randomNumber].images.fixed_height.height;
 
-        	var containerWidth = (parseInt(gifWidth) + 250);
+        	var containerWidth = (parseInt(gifWidth));
         	var containerHeight = (parseInt(gifHeight) + 50);
         	var calcMarginLeft = (containerWidth / 2) - (gifWidth / 2) + 'px';
 
@@ -220,31 +255,14 @@
 
         	$('.gify').append($('<img>',{id:'gifyimg', src:gifUrl}));
         	$('#gifyimg').css('margin-left', calcMarginLeft);
-        	$('#lorem-submitum').css('margin-top', (gifHeight - 100));
-        	$('#lorem-submitum').css('margin-left', marginLeftGif);
-        	$('#lorem-submitum').css('display', 'block'); //we don't want this jumping around the page
         }
       });
 
-		// $.ajax({
-  //       url: 'http://api.giphy.com/v1/stickers/search?q=taylor+swift&api_key=dc6zaTOxFJmzC',
-  //       dataType: 'json',
-  //       success: function(result){
-
-  //       	console.log(result);
-
-  //       	var randomNumber = Math.round(Math.random() * result.data.length);
-  //       	var gifUrl = result.data[randomNumber].images.fixed_width.url;
-  //       	$('.gify').append($('<img>',{id:'gifysticker', src:gifUrl}));
-  //       }
-  //     });
-
-
+	//TUMBLR HASHTAGS
 	$.ajax({
         url: 'http://api.tumblr.com/v2/blog/taylorswift.tumblr.com/posts?api_key=lFtJkzttWGO9Gz1xH6isQNVPidE4xIVV5XqPqzMfTzeg6vfUMw',
         dataType: 'jsonp',
         success: function(result){
-          // console.log(result.response);
 
           var hashTagArray = [];
 
@@ -276,6 +294,25 @@
 			if((easterEgg.counter > 13) && (easterEgg.counter % 13 === 1)){
 				$('.snowContainer').removeClass('snowing');
 				$('.snowContainer').css('background-image', '');
+			}
+		}
+
+		function isChristmas(forcedValue){
+			var today = new Date();
+
+			easterEgg.xmas = forcedValue ? forcedValue : ((today.getMonth() === 11) && (today.getDay() === 25));
+
+			christmasTheme();
+		}
+
+		function christmasTheme(){
+			if(easterEgg.xmas === true){
+				$('h1').append('<img class="xmashat" src="imgs/xmashat.png" />');
+				$('.albumCheckBoxes').append('<label id="christmasAlbum" class="hidden"><input class="album hidden" type="checkbox" value="soundsoftheseason"><span class="album-title">Sounds Of The Season</span></label>');
+				$('#christmasAlbum').fadeIn(2000);
+			}
+			else{
+				console.log('It\'s not christmas. Bummer.');
 			}
 		}
 	</script>
