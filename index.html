@@ -4,6 +4,7 @@
 <link rel="stylesheet" type="text/css" href="css/main.css">
 
 <link href='http://fonts.googleapis.com/css?family=Titillium+Web' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Titillium+Web:600' rel='stylesheet' type='text/css'>
 <link href='http://fonts.googleapis.com/css?family=Rock+Salt' rel='stylesheet' type='text/css'>
 <link href='http://fonts.googleapis.com/css?family=Hammersmith+One' rel='stylesheet' type='text/css'>
 
@@ -23,59 +24,70 @@
 <div class="errorMessage"></div>
 
 	<div class="snowContainer">
+
+			<div id="lorem-result">
+				<div class="gify-container">
+					<div class="gify"></div>
+				</div>
+				<span class="loading">Loading...</span>
+				<div id="outputWords"></div>
+			</div>
+
 		<div id="lorem-forem">
 
 			<form>
 				<h1>Taylor Swift Ipsum</h1>
 
-				Why be boring when you can be Taylor Swift? If you're working on a project & need some fun loreum ipsum placeholder text, you've come to the right place. Also, if you're bored & looking to entertain yourself this works too.
+				<span class="intro-text">Why be boring when you can be Taylor Swift? If you're working on a project & need some fun loreum ipsum placeholder text, you've come to the right place. Also, if you're bored & looking to entertain yourself this works too.</span>
 				<br /><br />
 
-				<div class="gify-container">
-					<div class="gify"></div>
-				</div>
+				<div class="form-text">
 
-				Generate <input type="text" id="numberWords" placeholder="13"> words of Taylor Swift Ipsum.
+					<div class="form-left">
+						<h3>Word Count</h3>
+						Generate <input type="text" id="numberWords" placeholder="130"> words of Taylor Swift Ipsum
 
-				<br /><br />
+						<br /><br />
+					
+						<h3>Hashtags</h3>
+						<input class="album" type="checkbox" value="hashtags"><label>Use hashtags from taylorswift.tumblr.com</label>
+					</div><!-- end form-left -->
 
-				With lyrics from: 
-				<div class="albumCheckBoxes">
-				<input class="album hidden" type="checkbox" value="ts" checked>
-				<label>
-					<input class="album hidden" type="checkbox" value="nineteenEightyNine">
-					<span class="album-title">1989</span>
-				</label>
-				<label>
-					<input class="album hidden" type="checkbox" value="red">
-					<span class="album-title">Red</span>
-				</label>
-				<label>
-					<input class="album hidden" type="checkbox" value="speakNow">
-					<span class="album-title">Speak Now</span>
-				</label>
-				<label>
-					<input class="album hidden" type="checkbox" value="fearless">
-					<span class="album-title">Fearless</span>
-				</label>
-				<label>
-					<input class="album hidden" type="checkbox" value="taylorSwift">
-					<span class="album-title">Taylor Swift</span>
-				</label>
-				</div>
-				
-				<br /><br />
+					<div class="form-right">
+						<h3>Lyrics</h3>
+						Include lyrics from the following albums:
+						<br />
 
-				<input class="album" type="checkbox" value="hashtags"><label>Use Taylor's Tumblr #hashtags</label>
+						<div class="albumCheckBoxes">
+							<input class="album hidden" type="checkbox" value="ts" checked>
+							<label>
+								<input class="album hidden" type="checkbox" value="nineteenEightyNine">
+								<span class="album-title">1989</span>
+							</label>
+							<label>
+								<input class="album hidden" type="checkbox" value="red">
+								<span class="album-title">Red</span>
+							</label>
+							<label>
+								<input class="album hidden" type="checkbox" value="speakNow">
+								<span class="album-title">Speak Now</span>
+							</label>
+							<label>
+								<input class="album hidden" type="checkbox" value="fearless">
+								<span class="album-title">Fearless</span>
+							</label>
+							<label>
+								<input class="album hidden" type="checkbox" value="taylorSwift">
+								<span class="album-title">Taylor Swift</span>
+							</label>
+						</div><!-- end albumCheckBoxes -->
+					</div><!-- end form-right -->
+				</div><!-- end form-text -->
 
 				<div id="lorem-submitum">Submit</div>
 
 			</form>
 		</div><!-- end lorem-forem -->
-
-		<div id="lorem-result">
-			Fill out the form above & hit the cat button to generate Taylor Swift Ipsum!
-		</div>
 
 		<div class="api-credits">
 			<p>Taylor Swift Ipsum: A super fun experiment by Emily B. O'Brien</p>
@@ -102,12 +114,13 @@
 
 		//EVENT LISTENERS
 		document.getElementById('lorem-submitum').addEventListener('click', generateIpsum, false);
+		document.getElementById('lorem-submitum').addEventListener('click', hideCurrentWords, false);
 		document.getElementById('lorem-submitum').addEventListener('click', initEasterEggs, false);
 
 		function getNumberWords(){
 			var defaultNumber, inputNumber;
 
-			defaultNumber = "13";
+			defaultNumber = "130";
 			inputNumber = $('#numberWords').val() || defaultNumber;
 
 			if(inputNumber >= 500000){
@@ -144,7 +157,6 @@
 
 			//concat the selected arrays
 			for(var i = 0; i < albums.length; i ++){
-				//holder = (lingo[firstAlbum]).concat(lingo[albums[i]]);
 				combinedWords = combinedWords.concat(lingo[albums[i]]);
 			}
 
@@ -153,19 +165,17 @@
 		
 		function generateIpsum(){
 			var storeWords, wordCount, combinedWords, finalWords, output, counter;
-			
-			// var start = new Date().getTime();
-			// var elapsed;
 
 			counter = 0;
 			storeWords = [];
 			wordCount = getNumberWords();
 			combinedWords = getAlbums();
 
-			while(counter < wordCount){
+			while(counter <= wordCount){
 				//get a new random number each time within the range of the combinedWords array
-				var randomNumber = Math.round(Math.random() * (combinedWords.length));
-				var spaces = combinedWords[randomNumber].match(/\s/g) || []; //returns array of spaces
+				var randomNumber = Math.round(Math.random() * (combinedWords.length - 1));
+
+				var spaces = combinedWords[randomNumber].match(/\s/g) || [];
 				counter = counter + (spaces.length + 1);
 				storeWords.push(combinedWords[randomNumber]);
 			}
@@ -173,25 +183,68 @@
 			//combine storeWords into 1 string to split them by each word, lob off extra words
 			finalWords = storeWords.join(' ').split(' ').splice(0, wordCount);
 			//highlight the hashies
-			highlightHashtags(finalWords);
+			//highlightHashtags(finalWords);
 			//add grammar
 			output = addGrammar(wordCount, finalWords).join(' ');
 			//display them
-			displayWords('lorem-result', output);
+			displayWords('outputWords', output);
 
-			// elapsed = new Date().getTime() - start;
-			// console.log('Time elapsed for generateIpsum: ', elapsed, 'with wordcount of: ', wordCount);
+			$("html, body").animate({ scrollTop: 0 }, "slow");
+
+			showHideGiphy();
+			//fade in text box
 		}
 
-		function highlightHashtags(textToParse){ //where textToParse is an array
-			//TODO: add links?
-			for(var z = 0; z < textToParse.length; z++){
-				if(textToParse[z].match(/#\w+/g)){
-					//TODO: fix this link situation
-					textToParse[z] = '<a href="http://www.tumblr.com/' + textToParse[z] + '" ><span class="hashie">' + textToParse[z] + '</span></a>';
-				}
+		function showHideGiphy(){
+			var resultBox = $('#lorem-result');
+			var gif = $('.gify-container');
+			var loading = $('.loading');
+
+			if(resultBox.css('display') === 'none'){
+				resultBox.css('display', 'block');
+				resultBox.animate({height: 300}, 'slow'); //figure out this height
+				gif.css('display', 'block');
+			}
+			else{
+				gif.css('display', 'block');
+			}
+			//Remove and replace
+			setTimeout(function(){
+				gif.fadeOut('slow', function(){
+					resultBox.css('height', 'auto');
+					displayWordContainer(); //display the text
+					changeCopy('So fun right? Want to try again with different selections? No problem - just fill out the form below & click the submit button again for another round of Taylor Swift Ipsum.');
+				});
+				loading.fadeOut('slow');
+			}, 2000);
+		}
+
+		function changeCopy(copy){
+			if(!$('.intro-text').hasClass('updated')){
+				$('.intro-text').fadeOut('fast', function(){
+				$('.intro-text').text(copy)
+					.fadeIn()
+					.addClass('updated');
+				})
+			}
+			else{
+				return;
 			}
 		}
+
+		function displayWordContainer(){
+			$('#outputWords').fadeIn();
+		}
+
+		function hideCurrentWords(){
+			if($('#outputWords').css('display') === 'block'){
+				$('#outputWords').css('display', 'none');//fade out then scroll to top?
+			}
+			else{
+				return;
+			}
+		}
+
 
 		function addGrammar(wordCount, finalWords){
 			wordCount = parseInt(wordCount);
@@ -223,7 +276,6 @@
 			else{
 				result = seed;
 			}
-
 			return result;
 		}
 
@@ -231,11 +283,10 @@
 			var location = document.getElementById(id);
 			location.innerHTML = words;
 		}
-
  
- 		//GIFY
+ 		//GIPHY
 		$.ajax({
-        url: 'http://api.giphy.com/v1/gifs/search?q=taylor+Swift&limit=100&api_key=dc6zaTOxFJmzC',
+        url: 'http://api.giphy.com/v1/gifs/search?q=blank+space&limit=100&api_key=12PnkylgHYUVgs',
         dataType: 'json',
         success: function(result){
         	//TODO: refactor this
@@ -277,8 +328,6 @@
 
         }
       });
-
-
 
 		//EASTER EGGS
 		var easterEgg = easterEgg || {};

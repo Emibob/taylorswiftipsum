@@ -33,16 +33,6 @@
   animation: snow 20s linear infinite;
 }
 
-body{
-	background: rgba(197,198,222,1);
-	background: -moz-linear-gradient(top, rgba(197,198,222,1) 0%, rgba(234,240,254,1) 66%, rgba(234,240,254,1) 100%);
-	background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(197,198,222,1)), color-stop(66%, rgba(234,240,254,1)), color-stop(100%, rgba(234,240,254,1)));
-	background: -webkit-linear-gradient(top, rgba(197,198,222,1) 0%, rgba(234,240,254,1) 66%, rgba(234,240,254,1) 100%);
-	background: -o-linear-gradient(top, rgba(197,198,222,1) 0%, rgba(234,240,254,1) 66%, rgba(234,240,254,1) 100%);
-	background: -ms-linear-gradient(top, rgba(197,198,222,1) 0%, rgba(234,240,254,1) 66%, rgba(234,240,254,1) 100%);
-	background: linear-gradient(to bottom, rgba(197,198,222,1) 0%, rgba(234,240,254,1) 66%, rgba(234,240,254,1) 100%);
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c5c6de', endColorstr='#eaf0fe', GradientType=0 );
-}
 h1{
 	text-align: center;
 	font-family: 'Hammersmith One', sans-serif;
@@ -50,15 +40,22 @@ h1{
 	font-size: 30px;
 	margin: 15px 0px 25px 0px;
 }
+h3{
+	font-weight: '400';
+	text-transform: uppercase;
+	font-size: 18px;
+}
 #numberWords{
 	width: 50px;
 	outline: none;
-	background-color: rgba(197,198,222,1);
+	background-color: #a9add1;
 	-webkit-transition: all 0.30s ease-in-out;
   -moz-transition: all 0.30s ease-in-out;
   -ms-transition: all 0.30s ease-in-out;
   -o-transition: all 0.30s ease-in-out;
-  border:1px solid black;
+  border: 1px solid black;
+  font-size: 13px;
+  padding-left: 5px;
 }
 #numberWords:focus{
 	border: 1px solid #5b5989;
@@ -79,9 +76,18 @@ h1{
 #lorem-forem form{
 	border: 1px solid black;
 	border-top: none;
-	padding: 20px;
-	width: 70%;
-	margin-left: 15%;
+	padding: 0% 10%;
+	width: 60%;
+	margin-left: 10%;
+	overflow: auto;
+	padding-bottom: 20px;
+}
+.form-text{
+	//text-transform: uppercase;
+	background: #a9add1;
+	padding: 0% 8%;
+	padding-top: 20px;
+	padding-bottom: 20px;
 	overflow: auto;
 }
 .hidden{
@@ -90,7 +96,11 @@ h1{
 .album-title{
 	background: #000;
 	color: rgba(197,198,222,1);
-	padding: 3px 6px;
+	padding: 4px 10px;
+	display: block;
+	width: 100%;
+	font-size: 13px;
+	text-transform: uppercase;
 }
 .album-title:hover{
 	cursor: pointer;
@@ -100,37 +110,33 @@ h1{
   background: #5b5989;
 }
 #lorem-submitum{
-	color: #fff;
-	width: 70px;
-	height: 50px;
+	width: 96%;
+	background-color: #000;
+	color: rgba(197,198,222,1);
 	text-align: center;
-	font-size: 14px;
-	letter-spacing: 1px;
+	padding: 2%;
 	text-transform: uppercase;
-	font-family: 'Hammersmith One', sans-serif;
-	background-image: url('../imgs/cat170.png');
-	padding-top: 20px;
-	float: right;
 }
 #lorem-submitum:hover{
 	cursor: pointer;
-	background-image: url('../imgs/cat270.png');
-	color: black;
+	background-color: #5b5989;
 }
 #lorem-result{
-	width: 80%;
-	min-height: 250px;
+	width: 70%;
 	background-color: #000;
 	color: rgba(197,198,222,1);
-	padding: 20px;
+	padding: 5%;
 	margin: 0% 10%;
-	margin-top: 20px;
+	border: 1px solid black;
+	display: none;
+	height: 0px;
+	//min-height: 200px;
 }
 .gify-container{
 	width: 800px;
 	height: 300px;
 	margin: 0px auto;
-	display: block;
+	display: none;
 }
 .gify{
 	width: 200px;
@@ -179,8 +185,27 @@ ul.logos{
 	margin: -20px 0px 0px -20px;
 }
 .albumCheckBoxes{
-	display: inline;
+	width: 100%;
+	overflow: hidden;
+	margin-top: 10px;
+}
+.form-left{
+	width: 45%;
+	float: right;
+}
+.form-right{
+	width: 45%;
 }
 #christmasAlbum .album-title:hover{
 	background-color: red;
+}
+#outputWords{
+	//opacity: 0;
+}
+.loading{
+	color: red;
+	font-size: 20px;
+	position: absolute;
+	z-index: 2;
+	margin: 0px auto;
 }
