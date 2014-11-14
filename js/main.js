@@ -1,7 +1,7 @@
 //EVENT LISTENERS
-document.getElementById('lorem-submitum').addEventListener('click', generateIpsum, false);
-document.getElementById('lorem-submitum').addEventListener('click', hideCurrentWords, false);
-document.getElementById('lorem-submitum').addEventListener('click', initEasterEggs, false);
+$('#lorem-submitum').click(generateIpsum);
+$('#lorem-submitum').click(hideCurrentWords);
+$('#lorem-submitum').click(initEasterEggs);
 
 //MAIN FUNCTIONALITY
 function getDesiredWordCount(){
@@ -92,14 +92,16 @@ function showHideGiphy(){
 		gif.css('display', 'block');
 	}
 	else{
-		gif.css('display', 'block');
+		gif.css('display', 'block'); //WHAT?
 	}
-	//Remove and replace
-	setTimeout(function(){
+
+	//do somethig with h1
+
+	setTimeout(function(){//Remove and replace
 		gif.fadeOut('slow', function(){
 			resultBox.css('height', 'auto');
 			$('#outputWords').fadeIn(); //display the text
-			changeCopy('So fun right? Want to try again with different selections? No problem - just fill out the form below & click the submit button again for another round of Taylor Swift Ipsum.');
+			changeCopy('So fun right? Want to try again with different selections? No problem. Just fill out the form below & click the submit button again for another round of Taylor Swift Ipsum.');
 		});
 		loading.fadeOut('slow');
 	}, 2000);

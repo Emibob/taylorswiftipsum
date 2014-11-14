@@ -32,13 +32,22 @@
   -ms-animation: snow 20s linear infinite;
   animation: snow 20s linear infinite;
 }
-
+.navigation{
+	background-color: #C0C0C0;
+	padding: 15px 0px 25px 0px;
+}
 h1{
 	text-align: center;
 	font-family: 'Hammersmith One', sans-serif;
 	text-transform: uppercase;
 	font-size: 30px;
-	margin: 15px 0px 25px 0px;
+	letter-spacing: 10px;
+	color: #fff;
+}
+.intro-text{
+	margin-top: 20px;
+	display: inline-block;
+	text-indent: 20px;
 }
 h3{
 	font-weight: '400';
@@ -53,49 +62,59 @@ h3{
   -moz-transition: all 0.30s ease-in-out;
   -ms-transition: all 0.30s ease-in-out;
   -o-transition: all 0.30s ease-in-out;
-  border: 1px solid black;
+  border: 1px solid #fff;
   font-size: 13px;
   padding-left: 5px;
+  color: #fff;
 }
 #numberWords:focus{
 	border: 1px solid #5b5989;
 	box-shadow: 0 0 5px #5b5989;
 }
 ::-webkit-input-placeholder {
-   color: #000;
+   color: #fff;
 }
 :-moz-placeholder { /* Firefox 18- */
-   color: #000;
+   color: #fff;
 }
 ::-moz-placeholder {  /* Firefox 19+ */
-   color: #000;  
+   color: #fff;  
 }
 :-ms-input-placeholder {  
-   color: #000;  
+   color: #fff;  
 }
 #lorem-forem form{
-	border: 1px solid black;
-	border-top: none;
+	//border-top: none;
 	padding: 0% 10%;
 	width: 60%;
 	margin-left: 10%;
 	overflow: auto;
-	padding-bottom: 20px;
+	padding-bottom: 66px;
+	border: 20px solid transparent;  
+  -moz-border-image: -moz-linear-gradient(top, #a30380 0%, #472255 50%, #39518e 100%);  
+  -webkit-border-image: -webkit-linear-gradient(top, #a30380 0%, #472255 50%, #39518e 100%);  
+  border-image: linear-gradient(to bottombottom, #a30380 0%, #472255 50%, #39518e 100%);  
+  border-image-slice: 1;  
+  border-top: 0px solid white;
 }
 .form-text{
-	//text-transform: uppercase;
 	background: #a9add1;
 	padding: 0% 8%;
 	padding-top: 20px;
 	padding-bottom: 20px;
 	overflow: auto;
+	color: #fff;
 }
-.hidden{
-	display: none;
+.form-left{
+	width: 45%;
+	float: right;
+}
+.form-right{
+	width: 45%;
 }
 .album-title{
-	background: #000;
-	color: rgba(197,198,222,1);
+	background: #fff;
+	color: #5b5989;
 	padding: 4px 10px;
 	display: block;
 	width: 100%;
@@ -104,15 +123,21 @@ h3{
 }
 .album-title:hover{
 	cursor: pointer;
-	background: #5b5989;
+	background: #C0C0C0;
 }
 :checked + span {
   background: #5b5989;
+  color: #fff;
+}
+.albumCheckBoxes{
+	width: 100%;
+	overflow: hidden;
+	margin-top: 10px;
 }
 #lorem-submitum{
 	width: 96%;
-	background-color: #000;
-	color: rgba(197,198,222,1);
+	background-color: #C0C0C0;
+	color: #fff;
 	text-align: center;
 	padding: 2%;
 	text-transform: uppercase;
@@ -127,7 +152,7 @@ h3{
 	color: rgba(197,198,222,1);
 	padding: 5%;
 	margin: 0% 10%;
-	border: 1px solid black;
+	border: 20px solid black;
 	display: none;
 	height: 0px;
 	//min-height: 200px;
@@ -142,6 +167,9 @@ h3{
 	width: 200px;
 	margin: 0px auto;
 	float: left;
+}
+#outputWords{
+	text-indent: 20px;
 }
 .hashie{
 	color: #5b5989;
@@ -184,28 +212,18 @@ ul.logos{
 	width: 40px;
 	margin: -20px 0px 0px -20px;
 }
-.albumCheckBoxes{
-	width: 100%;
-	overflow: hidden;
-	margin-top: 10px;
-}
-.form-left{
-	width: 45%;
-	float: right;
-}
-.form-right{
-	width: 45%;
-}
 #christmasAlbum .album-title:hover{
 	background-color: red;
 }
-#outputWords{
-	//opacity: 0;
-}
 .loading{
 	color: red;
-	font-size: 20px;
-	position: absolute;
-	z-index: 2;
+	font-size: 30px;
+	letter-spacing: 8px;
+	text-transform: uppercase;
+	width: 220px;
+	display: block;
 	margin: 0px auto;
+}
+.hidden{
+	display: none;
 }
