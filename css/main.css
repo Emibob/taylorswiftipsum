@@ -2,11 +2,15 @@
 	font-family: sans-serif;
 	letter-spacing: 1px;
 	font-family: 'Titillium Web', sans-serif;
-	font-size: 16px;
-	line-height: 24px;
+	font-size: 20px; //16px
+	line-height: 26px; //24px
 	margin: 0px;
 	padding: 0px;
 	list-style: none;
+}
+body{
+	margin: 0px;
+	padding: 0px;
 }
 
 @keyframes snow { 
@@ -52,7 +56,8 @@ h1{
 h3{
 	font-weight: '400';
 	text-transform: uppercase;
-	font-size: 18px;
+	font-size: 20px;
+	line-height: 0px;
 }
 #numberWords{
 	width: 50px;
@@ -104,6 +109,8 @@ h3{
 	padding-bottom: 20px;
 	overflow: auto;
 	color: #fff;
+	font-size: 18px;
+	overflow-x: hidden;
 }
 .form-left{
 	width: 45%;
@@ -141,6 +148,7 @@ h3{
 	text-align: center;
 	padding: 2%;
 	text-transform: uppercase;
+	letter-spacing: 4px;
 }
 #lorem-submitum:hover{
 	cursor: pointer;
@@ -155,7 +163,6 @@ h3{
 	border: 20px solid black;
 	display: none;
 	height: 0px;
-	//min-height: 200px;
 }
 .gify-container{
 	width: 800px;
@@ -220,10 +227,17 @@ ul.logos{
 	font-size: 30px;
 	letter-spacing: 8px;
 	text-transform: uppercase;
-	width: 220px;
+	width: 435px;
 	display: block;
 	margin: 0px auto;
 }
 .hidden{
+	display: none;
+}
+.masterpiece{
+	//max-width: 450px;
+	width: 50%;
+	margin-left: 25%;
+	margin-right: 25%;
 	display: none;
 }

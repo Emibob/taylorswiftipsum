@@ -86,22 +86,25 @@ function showHideGiphy(){
 			gif = $('.gify-container'),
 			loading = $('.loading');
 
-	if(resultBox.css('display') === 'none'){
+	if(resultBox.css('display') === 'none'){//the first time we click submit
 		resultBox.css('display', 'block');
 		resultBox.animate({height: 300}, 'slow'); //figure out this height
-		gif.css('display', 'block');
 	}
-	else{
-		gif.css('display', 'block'); //WHAT?
-	}
-
-	//do somethig with h1
+		
+	gif.css('display', 'block'); //WHAT?
+	loading.fadeIn();
 
 	setTimeout(function(){//Remove and replace
 		gif.fadeOut('slow', function(){
+			resultBox.css('min-height', '300px');
 			resultBox.css('height', 'auto');
 			$('#outputWords').fadeIn(); //display the text
-			changeCopy('So fun right? Want to try again with different selections? No problem. Just fill out the form below & click the submit button again for another round of Taylor Swift Ipsum.');
+			$('h1').fadeOut('fast', function(){
+				$('h1').text('Want more?');
+				$('h1').fadeIn();
+				$('.masterpiece').fadeIn();
+			});
+			changeCopy('Want to try again with different selections? No problem. Just fill out the form below & click the submit button again for another round of Taylor Swift Ipsum!');
 		});
 		loading.fadeOut('slow');
 	}, 2000);
