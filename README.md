@@ -8,7 +8,7 @@ _Nah, this might be annoying for people when they try to copy the text_
 - ~~Impliment a different way to get wordcount, possibly by number of spaces~~
 - ~~Refresh the Giphy loading gif on each submission~~
 - ~~In `addGrammar` add punctuation to the end of the last sentence~~
+- ~~Refactor ajax / css~~
+- ~~Use SASS / Compass~~
 - In `addGrammar` we want the first letter of the hashtag to be uppercase if it's at the beginning of the sentence
-- Refactor ajax / css
-- Use SASS / Compass
 - Experiment with rap genius fake apis
