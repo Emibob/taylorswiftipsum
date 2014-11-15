@@ -1,0 +1,26 @@
+/* set up color - use to define the vars below */
+
+$white: #fff;
+$black: #000;
+$red: #FF0000;
+$magenta: #a30380;
+$dark-purple: #472255;
+$dark-blue: #39518e;
+$light-periwinkle: #a9add1;
+$dark-periwinkle: #5b5989;
+$light-grey: #C0C0C0;
+
+/* use these in scss */ 
+
+$primary-color: $light-periwinkle;
+$secondary-color: $light-grey;
+$tertiary-color: $dark-periwinkle;
+
+$gradient-top: $magenta;
+$gradient-middle: $dark-purple;
+$graident-bottom: $dark-blue;
+
+/* MISC */
+
+$title-font: 'Hammersmith One', sans-serif;
+$primary-font: 'Titillium Web', sans-serif;

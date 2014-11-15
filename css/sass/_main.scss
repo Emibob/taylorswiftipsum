@@ -1,0 +1,76 @@
+#lorem-result{
+	width: 70%;
+	height: 0px;
+	margin: 0% 10%;
+	padding: 5%;
+	background-color: $black;
+	color: $primary-color;
+	border: 20px solid black;
+	display: none;
+}
+.giphy-container{
+	width: 800px;
+	height: 300px;
+	margin: 0px auto;
+	display: none;
+}
+.gif{
+	width: 200px;
+	margin: 0px auto;
+	float: left;
+}
+#outputWords{
+	text-indent: 30px;
+}
+.hashie{
+	color: $tertiary-color;
+}
+.api-credits{
+	width: 505px;
+	margin: 0px auto;
+	margin-top: 60px;
+	margin-bottom: 40px;
+	text-align: center;
+}
+.tumblr{
+	font-size: 12px;
+	line-height: 12px;
+}
+ul.logos{
+	width: 175px;
+	height: 10px;
+	margin: 0px auto;
+	margin-top: 10px;
+}
+.logos li{
+	padding: 0px;
+	font-size: 12px;
+	float: left;
+}
+.errorMessage{
+	width: 100%;
+	padding: 10px;
+	background-color: $red;
+	font-size: 20px;
+	text-align: center;
+	position: fixed;
+	z-index: 4;
+	display: none;
+}
+.loading{
+	width: 435px;
+	margin: 0px auto;
+	color: $red;
+	font-size: 30px;
+	letter-spacing: 8px;
+	text-transform: uppercase;
+	display: block;
+}
+.hidden{
+	display: none;
+}
+.masterpiece{
+	width: 50%;
+	@include margin-horizontal(25%);
+	display: none;
+}

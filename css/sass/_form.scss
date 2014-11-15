@@ -1,0 +1,86 @@
+.navigation{
+	background-color: $secondary-color;
+	padding: 15px 0px 25px 0px;
+}
+.intro-text{
+	margin-top: 20px;
+	display: inline-block;
+	text-indent: 30px;
+}
+#numberWords{
+	width: 50px;
+	outline: none;
+	background-color: $primary-color;
+  @include transition(all, 0.30s, ease-in-out);
+  border: 1px solid $white;
+  font-size: 13px;
+  padding-left: 5px;
+  color: $white;
+}
+#numberWords:focus{
+	border: 1px solid $tertiary-color;
+	box-shadow: 0 0 5px $tertiary-color;
+}
+#lorem-forem form{
+	width: 60%;
+	@include padding-horizontal(10%);
+	padding-top: 0%;
+	padding-bottom: 66px;
+	margin-left: 10%;
+	overflow: auto;
+	border: 20px solid transparent;  
+  @include triple-gradient($gradient-top, $gradient-middle, $graident-bottom);
+  border-image-slice: 1;  
+  border-top: 0px solid $white;
+}
+.form-text{
+	background: $primary-color;
+	color: $white;
+	@include padding-horizontal(8%);
+	@include padding-vertical(20px);
+	font-size: 18px;
+	overflow: auto;
+	overflow-x: hidden;
+}
+.form-left{
+	width: 45%;
+	float: right;
+}
+.form-right{
+	width: 45%;
+}
+.album-title{
+	width: 100%;
+	padding: 4px 10px;
+	font-size: 13px;
+	text-transform: uppercase;
+	background: $white;
+	color: $tertiary-color;
+	display: block;
+}
+.album-title:hover{
+	cursor: pointer;
+	background: $secondary-color;
+}
+:checked + span {
+  background: $tertiary-color;
+  color: $white;
+}
+.albumCheckBoxes{
+	width: 100%;
+	margin-top: 10px;
+	overflow: hidden;
+}
+#lorem-submitum{
+	width: 96%;
+	padding: 2%;
+	text-align: center;
+	text-transform: uppercase;
+	letter-spacing: 4px;
+	background-color: $secondary-color;
+	color: $white;
+}
+#lorem-submitum:hover{
+	cursor: pointer;
+	background-color: $tertiary-color;
+}

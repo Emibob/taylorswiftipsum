@@ -10,11 +10,11 @@ function getDesiredWordCount(){
 
 	if(inputNumber >= 500000){
 		inputNumber = defaultNumber;
-		showError('Trying to break me like a promise? Please choose a smaller number.');
+		showError('Trying to break me like a promise? Generating default 130 words.');
 	}
 	if(inputNumber.match(/[^0-9]/g)){
 		inputNumber = defaultNumber;
-		showError('Please enter a numeric value');
+		showError('Word count should be numeric value, generating default 130 words.');
 	}
 	return inputNumber;
 };
@@ -141,7 +141,7 @@ function replaceGif(){
 	$('.giphy-container').css('width', containerWidth);
   $('.giphy-container').css('height', containerHeight);
 
-  $('.gify').append($('<img>',{id:'gifyimg', src:gifUrl}));
+  $('.gif').append($('<img>',{id:'gifyimg', src:gifUrl}));
   $('#gifyimg').css('margin-left', calcMarginLeft);
 }
 

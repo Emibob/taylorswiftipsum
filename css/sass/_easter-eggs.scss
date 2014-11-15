@@ -1,0 +1,18 @@
+/*http://cssdeck.com/labs/css3-snow*/
+@include keyframe(snow){
+	0% { background-position: 0px 0px, 0px 0px, 0px 0px }
+  100% { background-position: 500px 1000px, 400px 400px, 300px 300px }
+}
+.snowing{
+  @include animation(snow, 20s);
+}
+
+.xmashat{
+	width: 40px;
+	margin: -20px 0px 0px -20px;
+	position: absolute;
+	z-index: 2;
+}
+#christmasAlbum .album-title:hover{
+	background-color: $red;
+}

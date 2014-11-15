@@ -1,0 +1,31 @@
+*{
+	font-family: sans-serif;
+	letter-spacing: 1px;
+	font-family: $primary-font;
+	font-size: 20px;
+	line-height: 26px;
+	margin: 0px;
+	padding: 0px;
+	list-style: none;
+}
+body{
+	margin: 0px;
+	padding: 0px;
+}
+h1{
+	font-family: $title-font;
+	font-size: 30px;
+	letter-spacing: 10px;
+	color: $white;
+	text-transform: uppercase;
+	text-align: center;
+}
+h3{
+	font-size: 20px;
+	line-height: 34px;
+	font-weight: '400';
+	text-transform: uppercase;
+}
+input {
+	@include placeholder{color: $white;}
+}
