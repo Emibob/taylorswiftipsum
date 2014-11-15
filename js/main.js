@@ -61,66 +61,88 @@ function generateIpsum(){
 
 	changeHtml('outputWords', output);
 	$("html, body").animate({ scrollTop: 0 }, "slow");
-	showHideGiphy();
+	refreshView();
 }
 
 function addGrammar(wordCount, finalWords){
 	wordCount = parseInt(wordCount);
 	var counter = 0;
 
-	while((counter >= 0) && (counter < (wordCount - 11))){
+	while((counter >= 0) && (counter < (wordCount - 12))){
 		var randomNumber = parseInt(getRandomNumberBtwn(5, 11));
-		counter = counter + randomNumber; 
+		counter = counter + randomNumber;//include the next capitalized word 
 		//keep track of what index we're at and make sure it never gets bigger than the array length
 
 		finalWords[counter] = finalWords[counter] + '.'; // add punctuation
 		finalWords[counter + 1] = (finalWords[counter + 1].charAt(0).toUpperCase()) + (finalWords[counter + 1].slice(1));
 		//TODO: if it's a hastag, capitalize the one after it
 	}
+	//capitalize the first word of paragraph & add punctuation to last word of paragraph
 	finalWords[0] = finalWords[0].charAt(0).toUpperCase() + finalWords[0].slice(1);
+	finalWords[finalWords.length - 1] = finalWords[finalWords.length - 1] + '.';
 	return finalWords;
 }
 
-function showHideGiphy(){
+function refreshView(){
 	var resultBox = $('#lorem-result'),
-			gif = $('.gify-container'),
+			gif = $('.giphy-container'),
 			loading = $('.loading');
 
-	if(resultBox.css('display') === 'none'){//the first time we click submit
+	//the first time submit is clicked we introduce the black box
+	if(resultBox.css('display') === 'none'){
 		resultBox.css('display', 'block');
-		resultBox.animate({height: 300}, 'slow'); //figure out this height
+		resultBox.animate({height: 300}, 'slow');
 	}
-		
-	gif.css('display', 'block'); //WHAT?
+	
+	//show gif loading
+	gif.css('display', 'block');
 	loading.fadeIn();
 
-	setTimeout(function(){//Remove and replace
-		gif.fadeOut('slow', function(){
-			resultBox.css('min-height', '300px');
-			resultBox.css('height', 'auto');
-			$('#outputWords').fadeIn(); //display the text
-			$('h1').fadeOut('fast', function(){
-				$('h1').text('Want more?');
-				$('h1').fadeIn();
-				$('.masterpiece').fadeIn();
-			});
-			changeCopy('Want to try again with different selections? No problem. Just fill out the form below & click the submit button again for another round of Taylor Swift Ipsum!');
-		});
+	//wait then remove & refresh
+	setTimeout(function(){
+		
+		//remove gif & loading
 		loading.fadeOut('slow');
+		gif.fadeOut('slow', function(){
+			
+			//fix black box height
+			resultBox.css('min-height', '300px')
+				.css('height', 'auto');
+
+			//display new ipsum
+			$('#outputWords').fadeIn();
+
+			refreshOnce($('h1'), fadeReplaceText, {element: $('h1'), copy: 'Want more?'});
+			refreshOnce($('.intro-text'), fadeReplaceText, {element: $('.intro-text'), copy: 'Want to try again with different selections? No problem. Just fill out the form below & click the submit button again for another round of Taylor Swift Ipsum!'});
+			refreshOnce($('.masterpiece'), $.fn.fadeIn);
+			replaceGif();
+		});
+
 	}, 2000);
 }
 
-function changeCopy(copy){
-	var intro = $('.intro-text');
+function replaceGif(){
+
+	var randomNumber = getRandomNumberBtwn(0, (window.allGifs.length - 1));
+
+	var gifUrl = window.allGifs[randomNumber].images.fixed_height.url;
+  var gifWidth = window.allGifs[randomNumber].images.fixed_height.width;
+  var gifHeight = window.allGifs[randomNumber].images.fixed_height.height;
 	
-	if(!intro.hasClass('updated')){
-		intro.fadeOut('fast', function(){
-			intro.text(copy)
-				.fadeIn()
-				.addClass('updated');
-		});
-	}
-	else{ return; }
+	var containerWidth = (parseInt(gifWidth));
+  var containerHeight = (parseInt(gifHeight) + 50);
+  var calcMarginLeft = (containerWidth / 2) - (gifWidth / 2) + 'px';
+
+  var marginLeftGif = (parseInt(gifWidth) + 60) + 'px';
+
+
+	$('#gifyimg').remove();
+
+	$('.giphy-container').css('width', containerWidth);
+  $('.giphy-container').css('height', containerHeight);
+
+  $('.gify').append($('<img>',{id:'gifyimg', src:gifUrl}));
+  $('#gifyimg').css('margin-left', calcMarginLeft);
 }
 
 function hideCurrentWords(){
@@ -157,28 +179,51 @@ function getRandomNumberBtwn(min, max){
 	return result;
 }
 
+//update the given element's state and call function once
+function refreshOnce(element, callback, options){
+	
+	// if(arguments.length >= 3){ var options = Array.prototype.slice.call(arguments, 2); }
+
+	if(!(element).hasClass('updated')){
+		element.addClass('updated');
+		if(callback && (typeof callback === 'function')){
+			if(options){
+				//accepts more than 1 param by setting options to an obj
+				callback.call(element, options);
+			}
+			else{
+				callback.call(element);
+			}
+		}
+		return element;
+	}
+	else{ return; }
+}
+
+function fadeReplaceText(options){
+	var $el = options.element,
+			copy = options.copy;
+
+	$el.fadeOut('fast', function(){
+		$el.text(copy)
+			.fadeIn();
+	});
+}
+
 //GIPHY
 $.ajax({
     url: 'http://api.giphy.com/v1/gifs/search?q=blank+space&limit=100&api_key=12PnkylgHYUVgs',
     dataType: 'json',
     success: function(result){
-    	//TODO: refactor this
-    	var randomNumber = Math.round(Math.random() * result.data.length);
-    	var gifUrl = result.data[randomNumber].images.fixed_height.url;
-    	var gifWidth = result.data[randomNumber].images.fixed_height.width;
-    	var gifHeight = result.data[randomNumber].images.fixed_height.height;
+    	var allGifs = [];
 
-    	var containerWidth = (parseInt(gifWidth));
-    	var containerHeight = (parseInt(gifHeight) + 50);
-    	var calcMarginLeft = (containerWidth / 2) - (gifWidth / 2) + 'px';
+    	_.each(result.data, function(gifInfo){
+    		allGifs.push(gifInfo);
+    	});
 
-    	var marginLeftGif = (parseInt(gifWidth) + 60) + 'px';
+    	window.allGifs = allGifs;
 
-    	$('.gify-container').css('width', containerWidth);
-    	$('.gify-container').css('height', containerHeight);
-
-    	$('.gify').append($('<img>',{id:'gifyimg', src:gifUrl}));
-    	$('#gifyimg').css('margin-left', calcMarginLeft);
+    	replaceGif();
     }
   });
 
@@ -206,16 +251,19 @@ $.ajax({
 var easterEgg = easterEgg || {};
 
 function initEasterEggs(){
+	var snow = $('.snowContainer');
+
 	easterEgg.counter = easterEgg.counter || 0;
+
 	easterEgg.counter ++;
 
 	if(easterEgg.counter % 13 === 0){
-		$('.snowContainer').css('background-image', 'url("https://usatlife.files.wordpress.com/2014/08/everswifttumblrcom.gif?w=1000")');//https://usatlife.files.wordpress.com/2014/08/everswifttumblrcom.gif?w=1000
-		$('.snowContainer').addClass('snowing');
+		snow.css('background-image', 'url("https://usatlife.files.wordpress.com/2014/08/everswifttumblrcom.gif?w=1000")');//https://usatlife.files.wordpress.com/2014/08/everswifttumblrcom.gif?w=1000
+		snow.addClass('snowing');
 	}
 	if((easterEgg.counter > 13) && (easterEgg.counter % 13 === 1)){
-		$('.snowContainer').removeClass('snowing');
-		$('.snowContainer').css('background-image', '');
+		snow.removeClass('snowing');
+		snow.css('background-image', '');
 	}
 }
 

@@ -6,8 +6,8 @@ _Actually, should not be done because a user may wish to generate a number of wo
 - ~~In `highlightHashtags` we might want to add the tumblr hastag link (which would be super easy)~~
 _Nah, this might be annoying for people when they try to copy the text_
 - ~~Impliment a different way to get wordcount, possibly by number of spaces~~
-- Refresh the Giphy loading gif on each submission
-- In `addGrammar` add punctuation to the end of the last sentence
+- ~~Refresh the Giphy loading gif on each submission~~
+- ~~In `addGrammar` add punctuation to the end of the last sentence~~
 - In `addGrammar` we want the first letter of the hashtag to be uppercase if it's at the beginning of the sentence
 - Refactor ajax / css
 - Use SASS / Compass
