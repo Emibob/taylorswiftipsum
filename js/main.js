@@ -212,7 +212,7 @@ function fadeReplaceText(options){
 
 //GIPHY
 $.ajax({
-    url: 'http://api.giphy.com/v1/gifs/search?q=blank+space&limit=100&api_key=12PnkylgHYUVgs',
+    url: 'http://api.giphy.com/v1/gifs/search?q=taylor+swift&limit=100&api_key=12PnkylgHYUVgs',
     dataType: 'json',
     success: function(result){
     	var allGifs = [];
