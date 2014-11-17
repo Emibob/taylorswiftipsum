@@ -125,16 +125,15 @@ function replaceGif(){
 
 	var randomNumber = getRandomNumberBtwn(0, (window.allGifs.length - 1));
 
-	var gifUrl = window.allGifs[randomNumber].images.fixed_height.url;
-  var gifWidth = window.allGifs[randomNumber].images.fixed_height.width;
-  var gifHeight = window.allGifs[randomNumber].images.fixed_height.height;
+	var gifUrl = window.allGifs[randomNumber].images.fixed_height.url || 'http://media3.giphy.com/media/RrNielf11uMsU/200.gif';
 	
+  var gifWidth = window.allGifs[randomNumber].images.fixed_height.width || '361';
+  var gifHeight = window.allGifs[randomNumber].images.fixed_height.height || '200';
+
 	var containerWidth = (parseInt(gifWidth));
   var containerHeight = (parseInt(gifHeight) + 50);
   var calcMarginLeft = (containerWidth / 2) - (gifWidth / 2) + 'px';
-
   var marginLeftGif = (parseInt(gifWidth) + 60) + 'px';
-
 
 	$('#gifyimg').remove();
 
@@ -216,9 +215,16 @@ $.ajax({
     dataType: 'json',
     success: function(result){
     	var allGifs = [];
+    	var restricted = [];
+    	restrictedIds = ['cIGd1ypgKQANi', '10vTFkY3S0ImRO'];//TODO: refactor
 
     	_.each(result.data, function(gifInfo){
-    		allGifs.push(gifInfo);
+    		if((gifInfo.id === '10vTFkY3S0ImRO') || (gifInfo.id === 'cIGd1ypgKQANi')){
+    			restricted.push(gifInfo);
+    		}
+    		else{
+    			allGifs.push(gifInfo);
+    		}
     	});
 
     	window.allGifs = allGifs;
