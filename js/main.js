@@ -37,13 +37,14 @@ function getSelectedAlbumLyrics(){
 	return allLyrics;
 }
 
-function generateIpsum(){
+function generateIpsum(e, apicount, apialbums, apibool){ //eep
 	var storeWords = [],
-			wordCount = getDesiredWordCount(),
-			combinedWords = getSelectedAlbumLyrics(),
+			wordCount = apicount || getDesiredWordCount(),
+			combinedWords = apialbums || getSelectedAlbumLyrics(),
 			counter = 0,
 			finalWords,
-			output;
+			output
+			isApi = apibool || false;
 
 	while(counter <= wordCount){
 		//get a new random number each time within the range of the combinedWords array
@@ -59,10 +60,17 @@ function generateIpsum(){
 	//add grammar
 	output = addGrammar(wordCount, finalWords).join(' ');
 
-	changeHtml('outputWords', output);
-	$("html, body").animate({ scrollTop: 0 }, "slow");
-	refreshView();
+	if(isApi === false){
+		changeHtml('outputWords', output);
+		$("html, body").animate({ scrollTop: 0 }, "slow");
+		refreshView();
+	}
+	else{
+		return output;
+	}
 }
+
+
 
 function addGrammar(wordCount, finalWords){
 	wordCount = parseInt(wordCount);
