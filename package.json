@@ -1,0 +1,23 @@
+{
+  "name": "Grunt",
+  "version": "0.0.1",
+  "description": "grunt for taylorswiftipsum",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Emibob/taylorswiftipsum.git"
+  },
+  "author": "Emily O'Brien",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Emibob/taylorswiftipsum/issues"
+  },
+  "homepage": "https://github.com/Emibob/taylorswiftipsum",
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-contrib-uglify": "^0.7.0"
+  }
+}
