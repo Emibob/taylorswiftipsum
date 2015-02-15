@@ -1,3 +1,4 @@
 #Ignore these files
 
 **/.sass-cache/*
+node_modules
