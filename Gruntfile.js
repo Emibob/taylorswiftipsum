@@ -60,6 +60,11 @@ module.exports = function(grunt){
 				files: ['src/sass/*.scss'],
 				tasks: ['sass:dev']
 			}
+		},
+		karma: {
+			unit: {
+				configFile: 'karma.conf.js'
+			}
 		}
 	});
 
@@ -67,9 +72,13 @@ module.exports = function(grunt){
 	grunt.loadNpmTasks('grunt-contrib-uglify');
 	grunt.loadNpmTasks('grunt-contrib-watch');
 	grunt.loadNpmTasks('grunt-sass');
+	grunt.loadNpmTasks('grunt-karma');
 
 	//Register task(s)
 	grunt.registerTask('default', ['uglify:devMain', 'uglify:devLib', 'sass:dev']); //grunt
 	grunt.registerTask('build', ['uglify:buildMain', 'uglify:buildLib', 'sass:build']); //grunt build
 	grunt.registerTask('dev', ['uglify:devMain', 'uglify:devLib', 'sass:dev']); //grunt dev
+	grunt.registerTask('ci', ['karma:unit']); //grunt ci
+
 };
+
