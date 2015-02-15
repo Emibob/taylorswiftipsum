@@ -4,9 +4,13 @@ module.exports = function(grunt){
 	grunt.initConfig({
 		pkg: grunt.file.readJSON('package.json'),
 		uglify: {
-			build: {
+			buildMain: {
 				src: 'src/js/main/*.js',
-				dest: 'js/script.min.js'
+				dest: 'js/main.min.js'
+			},
+			buildLib: {
+				src: 'src/js/lib/*.js',
+				dest: 'js/lib.min.js'
 			}
 		}
 	});
@@ -15,6 +19,6 @@ module.exports = function(grunt){
 	grunt.loadNpmTasks('grunt-contrib-uglify');
 
 	//Register task(s)
-	grunt.registerTask('default', ['uglify:build']);
+	grunt.registerTask('default', ['uglify:buildMain', 'uglify:buildLib']);
 
 };
