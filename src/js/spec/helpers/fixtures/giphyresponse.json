@@ -1,0 +1,117 @@
+{
+	"data": [
+		{	"bitly_gif_url" : "http://gph.is/163FIFg",
+			"bitly_url" : "http://gph.is/163FIFg",
+			"caption" : "",
+			"content_url" : "",
+			"embed_url" : "http://giphy.com/embed/TrkiFaoMnmLew",
+			"id" : "TrkiFaoMnmLew",
+			"images" : {
+				"downsized" : {
+					"height" : "275",
+					"size" : "507113",
+					"url" : "http://media0.giphy.com/media/TrkiFaoMnmLew/giphy.gif",
+					"width" : "500"
+					},
+				"downsized_still" : {
+					"height" : "275",
+					"url" : "http://media0.giphy.com/media/TrkiFaoMnmLew/giphy_s.gif",
+					"width" : "500"
+					},
+				"fixed_height" : {
+					"height" : "200",
+					"mp4" : "http://media0.giphy.com/media/TrkiFaoMnmLew/200.mp4",
+					"mp4_size" : "0",
+					"size" : "0",
+					"url" : "http://media0.giphy.com/media/TrkiFaoMnmLew/200.gif",
+					"webp" : "",
+					"webp_size" : "0",
+					"width": "364"
+					},
+				"fixed_height_downsampled" : {
+					"height" : "200",
+					"url" : "http://media0.giphy.com/media/TrkiFaoMnmLew/200_d.gif",
+					"width" : "364"
+					},
+				"fixed_height_small" : {
+					"height" : "100",
+					"mp4" : "0",
+					"mp4_size" : "0",
+					"size" : "0",
+					"url" : "http://media0.giphy.com/media/TrkiFaoMnmLew/100.gif",
+					"webp" : "",
+					"webp_size" : "0",
+					"width" : "182"
+					},
+				"fixed_height_small_still" : {
+					"height" : "100",
+					"url" : "http://media0.giphy.com/media/TrkiFaoMnmLew/100_s.gif",
+					"width" : "182"
+					},
+				"fixed_height_still" : {
+					"height" : "200",
+					"url" : "http://media0.giphy.com/media/TrkiFaoMnmLew/200_s.gif",
+					"width" : "364"
+					},
+				"fixed_width" : {
+					"height" : "110",
+					"mp4" : "http://media0.giphy.com/media/TrkiFaoMnmLew/200w.mp4",
+					"mp4_size" : "0",
+					"size" : "0",
+					"url" : "http://media0.giphy.com/media/TrkiFaoMnmLew/200w.gif",
+					"webp" : "",
+					"webp_size" : "0",
+					"width" : "200"
+					},
+				"fixed_width_downsampled" : {
+					"height" : "110",
+					"url": "http://media0.giphy.com/media/TrkiFaoMnmLew/200w_d.gif",
+					"width": "200"
+					},
+				"fixed_width_small" : {
+					"height" : "55",
+					"mp4" : "0",
+					"mp4_size" : "0",
+					"size" : "0",
+					"url" : "http://media0.giphy.com/media/TrkiFaoMnmLew/100w.gif",
+					"webp" : "",
+					"webp_size" : "0",
+					"width" : "100"
+					},
+				"fixed_width_small_still" : {
+					"height": "55",
+					"url": "http://media0.giphy.com/media/TrkiFaoMnmLew/100w_s.gif",
+					"width" : "100"
+					},
+				"fixed_width_still" : {
+					"height" : "110",
+					"url" : "http://media0.giphy.com/media/TrkiFaoMnmLew/200w_s.gif",
+					"width" : "200"
+					},
+				"original" : {
+					"frames" : "10",
+					"height" : "275",
+					"mp4" : "http://media0.giphy.com/media/TrkiFaoMnmLew/giphy.mp4",
+					"mp4_size" : "0",
+					"size" : "507113",
+					"url" : "http://media0.giphy.com/media/TrkiFaoMnmLew/giphy.gif",
+					"webp" : "",
+					"webp_size" : "0",
+					"width" : "500"
+					},
+				"original_still" : {
+					"height" : "275",
+					"url" : "http://media0.giphy.com/media/TrkiFaoMnmLew/giphy_s.gif",
+					"width" : "500"
+					}
+				},
+			"import_datetime" : "2013-09-14 02:59:19",
+			"rating" : "pg",
+			"source" : "http://paradiseswiftie.tumblr.com/post/61162197344",
+			"trending_datetime" : "1970-01-01 00:00:00",
+			"type" : "gif",
+			"url" : "http://giphy.com/gifs/taylor-swift-TrkiFaoMnmLew",
+			"username" : ""
+		}
+	]
+}
