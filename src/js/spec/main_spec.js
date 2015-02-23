@@ -7,6 +7,7 @@ describe("the lingo dictionary", function(){
 	describe("when the lingo library is loaded", function(){
 
 		it("contains the array ts", function(){
+
 			expect(lingo.ts.length).toBeGreaterThan(0);
 		});
 		it("contains the array nineteenEightyNine", function(){
