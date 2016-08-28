@@ -1,35 +1,35 @@
-(function(){
+const $ = require('jquery');
+
+(function() {
 	'use strict';
 
 	window.utility = {
-		getRandomNumberBtwn: function getRandomNumberBtwn(min, max){
+		getRandomNumberBtwn: function getRandomNumberBtwn(min, max) {
 			var seed = Math.round(Math.random() * max),
 				result;
 
-				if(seed < min){
+				if(seed < min) {
 					result = getRandomNumberBtwn(min, max);
-				}
-				else{
+				} else {
 					result = seed;
 				}
 				
 				return result;
 		},
-		changeHtml: function changeHtml(id, words){
+		changeHtml: function changeHtml(id, words) {
 			var location = document.getElementById(id);
 			location.innerHTML = words;
 		},
-		refreshOnce: function refreshOnce(element, callback, options){
+		refreshOnce: function refreshOnce(element, callback, options) {
 
-			if(!(element).hasClass('updated')){
+			if(!(element).hasClass('updated')) {
 				element.addClass('updated');
 				
-				if(callback && (typeof callback === 'function')){
-					if(options){
+				if(callback && (typeof callback === 'function')){ 
+					if(options) {
 						//accepts more than 1 param by setting options to an obj
 						callback.call(element, options);
-					}
-					else{
+					} else {
 						callback.call(element);
 					}
 				}
@@ -39,16 +39,16 @@
 			
 			else{ return; }
 		},
-		fadeReplaceText: function fadeReplaceText(options){
+		fadeReplaceText: function fadeReplaceText(options) {
 			var $el = options.element,
 				copy = options.copy;
 
-				$el.fadeOut('fast', function(){
+				$el.fadeOut('fast', function() {
 				$el.text(copy)
 					.fadeIn();
 				});
 		},
-		showError: function showError(errorText){
+		showError: function showError(errorText) {
 			$('.errorMessage').text(errorText)
 				.css('display', 'block')
 				.fadeOut(9000, 'linear');

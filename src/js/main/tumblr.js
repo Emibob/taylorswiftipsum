@@ -1,3 +1,6 @@
+import _ from 'underscore';
+import $ from 'jquery';
+
 (function(){
 $.ajax({
     url: 'http://api.tumblr.com/v2/blog/taylorswift.tumblr.com/posts?api_key=lFtJkzttWGO9Gz1xH6isQNVPidE4xIVV5XqPqzMfTzeg6vfUMw',

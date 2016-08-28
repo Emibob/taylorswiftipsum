@@ -1,13 +1,13 @@
-window.View = function View(options){
+import $ from 'jquery';
+
+window.View = function View(options) {
 	'use strict';
 
 	this.model = options.model || {};
 	this.$el = options.$el;
 	self = this;
 
-	console.log(this.model);
-
-	this.init = function init(){
+	this.init = () => {
 		self.model.getWordCount();
 		self.model.updateCheckedAlbums();
 		self.model.getLyricsByAlbums();
@@ -16,20 +16,21 @@ window.View = function View(options){
 		self.renderView();
 	}
 
-	this.renderView = function renderView(){
+	this.renderView = () => {
 		replaceGif();
 		window.utility.changeHtml('outputWords', self.model.ipsum);
 		$("html, body").animate({ scrollTop: 0 }, "slow");
 		refreshView();
 	}
 
-	function refreshView(){
+	const refreshView = () => {
+
 		var resultBox = $('#lorem-result'),
 			gif = $('.giphy-container'),
 			loading = $('.loading');
 
 		//the first time submit is clicked we introduce the black box
-		if(resultBox.css('display') === 'none'){
+		if(resultBox.css('display') === 'none') {
 			resultBox.css('display', 'block');
 			resultBox.animate({height: 300}, 'slow');
 		}
@@ -39,27 +40,28 @@ window.View = function View(options){
 		loading.fadeIn();
 
 		//wait then remove & refresh
-		setTimeout(function(){
+		setTimeout(function() {
 			//remove gif & loading
 			loading.fadeOut('slow');
-			gif.fadeOut('slow', function(){
+
+			gif.fadeOut('slow', function() {
 			
-			//fix black box height
-			resultBox.css('min-height', '300px')
-				.css('height', 'auto');
+				//fix black box height
+				resultBox.css('min-height', '300px')
+					.css('height', 'auto');
 
-			//display new ipsum
-			$('#outputWords').fadeIn();
+				//display new ipsum
+				$('#outputWords').fadeIn();
 
-			window.utility.refreshOnce($('h1'), window.utility.fadeReplaceText, {element: $('h1'), copy: 'Want more?'});
-			window.utility.refreshOnce($('.intro-text'), window.utility.fadeReplaceText, {element: $('.intro-text'), copy: 'Want to try again with different selections? No problem. Just fill out the form below & click the submit button again for another round of Taylor Swift Ipsum!'});
-			window.utility.refreshOnce($('.masterpiece'), $.fn.fadeIn);
-			replaceGif();
-		});
+				window.utility.refreshOnce($('h1'), window.utility.fadeReplaceText, {element: $('h1'), copy: 'Want more?'});
+				window.utility.refreshOnce($('.intro-text'), window.utility.fadeReplaceText, {element: $('.intro-text'), copy: 'Want to try again with different selections? No problem. Just fill out the form below & click the submit button again for another round of Taylor Swift Ipsum!'});
+				window.utility.refreshOnce($('.masterpiece'), $.fn.fadeIn);
+				replaceGif();
+			});
 		}, 2000);
 	}
 
-	function replaceGif(){
+	const replaceGif = () => {
 
 		var randomNumber = window.utility.getRandomNumberBtwn(0, (window.allGifs.length - 1));
 
@@ -81,11 +83,11 @@ window.View = function View(options){
   		$('.gif').append($('<img>',{id:'gifyimg', src:gifUrl}));
   		$('#gifyimg').css('margin-left', calcMarginLeft);
 	}
-
-	this.hideCurrentWords = function hideCurrentWords(){
+ 
+	this.hideCurrentWords =  () => {
 		var currentWords = $('#outputWords');
 	
-		if(currentWords.css('display') === 'block'){
+		if(currentWords.css('display') === 'block') {
 			currentWords.css('display', 'none');
 		}
 		else { return; }

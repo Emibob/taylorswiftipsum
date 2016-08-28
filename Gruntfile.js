@@ -5,11 +5,11 @@ module.exports = function(grunt){
 		pkg: grunt.file.readJSON('package.json'),
 		uglify: {
 			buildMain: {
-				src: 'src/js/main/*.js',
+				src: 'babelified/js/main/*.js',
 				dest: 'js/main.min.js'
 			},
 			buildLib: {
-				src: 'src/js/lib/*.js',
+				src: 'babelified/js/lib/*.js',
 				dest: 'js/lib.min.js'
 			},
 			devMain: {
@@ -19,7 +19,7 @@ module.exports = function(grunt){
 					compress: false,
 					preserveComments: 'all'
 				},
-				src: 'src/js/main/*.js',
+				src: 'babelified/js/main/*.js',
 				dest: 'js/main.min.js'
 			},
 			devLib: {
@@ -29,7 +29,7 @@ module.exports = function(grunt){
 					compress: false,
 					preserveComments: 'all'
 				},
-				src: 'src/js/lib/*.js',
+				src: 'babelified/js/lib/*.js',
 				dest: 'js/lib.min.js'
 			}
 		},

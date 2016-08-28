@@ -1,1 +1,270 @@
-*{font-family:sans-serif;letter-spacing:1px;font-family:'Titillium Web',sans-serif;font-size:20px;line-height:26px;margin:0px;padding:0px;list-style:none;text-decoration:none}body{margin:0px;padding:0px}h1{font-family:'Hammersmith One',sans-serif;font-size:30px;letter-spacing:10px;color:#fff;text-transform:uppercase;text-align:center}h3{font-size:20px;line-height:34px;font-weight:'400';text-transform:uppercase}input::-webkit-input-placeholder{color:#fff}input:-moz-placeholder{color:#fff}input::-moz-placeholder{color:#fff}input:-ms-input-placeholder{color:#fff}.navigation{background-color:#C0C0C0;padding:15px 0px 25px 0px}.intro-text{margin-top:20px;display:inline-block;text-indent:30px}#numberWords{width:50px;outline:none;background-color:#a9add1;-webkit-transition:all 0.3s ease-in-out;-moz-transition:all 0.3s ease-in-out;-ms-transition:all 0.3s ease-in-out;-o-transition:all 0.3s ease-in-out;transition:all 0.3s ease-in-out;border:1px solid #fff;font-size:13px;padding-left:5px;color:#fff}#numberWords:focus{border:1px solid #5b5989;box-shadow:0 0 5px #5b5989}#lorem-forem form{width:60%;padding-left:10%;padding-right:10%;padding-top:0%;padding-bottom:66px;margin-left:10%;overflow:auto;border:20px solid transparent;-moz-border-image:-moz-linear-gradient(top, #a30380 0%, #472255 50%, #39518e 100%);-webkit-border-image:-webkit-linear-gradient(top, #a30380 0%, #472255 50%, #39518e 100%);border-image:linear-gradient(to bottombottom, #a30380 0%, #472255 50%, #39518e 100%);border-image-slice:1;border-top:0px solid #fff}.form-text{background:#a9add1;color:#fff;padding-left:8%;padding-right:8%;padding-top:20px;padding-bottom:20px;font-size:18px;overflow:auto;overflow-x:hidden}.form-left{width:45%;float:right}.form-right{width:45%}.album-title{width:100%;padding:4px 10px;font-size:13px;text-transform:uppercase;background:#fff;color:#5b5989;display:block}.album-title:hover{cursor:pointer;background:#C0C0C0}:checked+span{background:#5b5989;color:#fff}.albumCheckBoxes{width:100%;margin-top:10px;overflow:hidden}#lorem-submitum{width:96%;padding:2%;text-align:center;text-transform:uppercase;letter-spacing:4px;background-color:#C0C0C0;color:#fff}#lorem-submitum:hover{cursor:pointer;background-color:#5b5989}#lorem-result{width:70%;height:0px;margin:0% 10%;padding:5%;background-color:#000;color:#a9add1;border:20px solid black;display:none}.giphy-container{width:800px;height:300px;margin:0px auto;display:none}.gif{width:200px;margin:0px auto;float:left}#outputWords{text-indent:30px}.hashie{color:#5b5989}.about{width:60%;margin:0px auto;margin-top:60px;text-align:center}.about-text{font-size:14px;color:#C0C0C0}.about-text a{font-size:14px;color:#a30380}.api-credits{width:505px;margin:0px auto;margin-top:34px;margin-bottom:40px;text-align:center;color:#C0C0C0}.tumblr{font-size:12px;line-height:12px}ul.logos{width:175px;height:10px;margin:0px auto;margin-top:10px}.logos li{padding:0px;font-size:12px;float:left}.errorMessage{width:100%;padding:10px;background-color:#FF0000;font-size:20px;text-align:center;position:fixed;z-index:4;display:none}.loading{width:435px;margin:0px auto;color:#FF0000;font-size:30px;letter-spacing:8px;text-transform:uppercase;display:block}.hidden{display:none}.masterpiece{width:50%;margin-left:25%;margin-right:25%;display:none}@-webkit-keyframes snow{0%{background-position:0px 0px,0px 0px,0px 0px}100%{background-position:500px 1000px,400px 400px,300px 300px}}@-moz-keyframes snow{0%{background-position:0px 0px,0px 0px,0px 0px}100%{background-position:500px 1000px,400px 400px,300px 300px}}@-o-keyframes snow{0%{background-position:0px 0px,0px 0px,0px 0px}100%{background-position:500px 1000px,400px 400px,300px 300px}}@keyframes snow{0%{background-position:0px 0px,0px 0px,0px 0px}100%{background-position:500px 1000px,400px 400px,300px 300px}}.snowing{-webkit-animation:snow 20s linear infinite;-moz-animation:snow 20s linear infinite;-ms-animation:snow 20s linear infinite;animation:snow 20s linear infinite}.xmashat{width:40px;margin:-20px 0px 0px -20px;position:absolute;z-index:2}#christmasAlbum .album-title:hover{background-color:#FF0000}
+/* set up color - use to define the vars below */
+/* use these in scss */
+/* MISC */
+* {
+  font-family: sans-serif;
+  letter-spacing: 1px;
+  font-family: 'Titillium Web', sans-serif;
+  font-size: 20px;
+  line-height: 26px;
+  margin: 0px;
+  padding: 0px;
+  list-style: none;
+  text-decoration: none; }
+
+body {
+  margin: 0px;
+  padding: 0px; }
+
+h1 {
+  font-family: 'Hammersmith One', sans-serif;
+  font-size: 30px;
+  letter-spacing: 10px;
+  color: #fff;
+  text-transform: uppercase;
+  text-align: center; }
+
+h3 {
+  font-size: 20px;
+  line-height: 34px;
+  font-weight: '400';
+  text-transform: uppercase; }
+
+input::-webkit-input-placeholder {
+  color: #fff; }
+input:-moz-placeholder {
+  color: #fff; }
+input::-moz-placeholder {
+  color: #fff; }
+input:-ms-input-placeholder {
+  color: #fff; }
+
+.navigation {
+  background-color: #C0C0C0;
+  padding: 15px 0px 25px 0px; }
+
+.intro-text {
+  margin-top: 20px;
+  display: inline-block;
+  text-indent: 30px; }
+
+#numberWords {
+  width: 50px;
+  outline: none;
+  background-color: #a9add1;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  border: 1px solid #fff;
+  font-size: 13px;
+  padding-left: 5px;
+  color: #fff; }
+
+#numberWords:focus {
+  border: 1px solid #5b5989;
+  box-shadow: 0 0 5px #5b5989; }
+
+#lorem-forem form {
+  width: 60%;
+  padding-left: 10%;
+  padding-right: 10%;
+  padding-top: 0%;
+  padding-bottom: 66px;
+  margin-left: 10%;
+  overflow: auto;
+  border: 20px solid transparent;
+  -moz-border-image: -moz-linear-gradient(top, #a30380 0%, #472255 50%, #39518e 100%);
+  -webkit-border-image: -webkit-linear-gradient(top, #a30380 0%, #472255 50%, #39518e 100%);
+  border-image: linear-gradient(to bottombottom, #a30380 0%, #472255 50%, #39518e 100%);
+  border-image-slice: 1;
+  border-top: 0px solid #fff; }
+
+.form-text {
+  background: #a9add1;
+  color: #fff;
+  padding-left: 8%;
+  padding-right: 8%;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  font-size: 18px;
+  overflow: auto;
+  overflow-x: hidden; }
+
+.form-left {
+  width: 45%;
+  float: right; }
+
+.form-right {
+  width: 45%; }
+
+.album-title {
+  width: 100%;
+  padding: 4px 10px;
+  font-size: 13px;
+  text-transform: uppercase;
+  background: #fff;
+  color: #5b5989;
+  display: block; }
+
+.album-title:hover {
+  cursor: pointer;
+  background: #C0C0C0; }
+
+:checked + span {
+  background: #5b5989;
+  color: #fff; }
+
+.albumCheckBoxes {
+  width: 100%;
+  margin-top: 10px;
+  overflow: hidden; }
+
+#lorem-submitum {
+  width: 96%;
+  padding: 2%;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  background-color: #C0C0C0;
+  color: #fff; }
+
+#lorem-submitum:hover {
+  cursor: pointer;
+  background-color: #5b5989; }
+
+#lorem-result {
+  width: 70%;
+  height: 0px;
+  margin: 0% 10%;
+  padding: 5%;
+  background-color: #000;
+  color: #a9add1;
+  border: 20px solid black;
+  display: none; }
+
+.giphy-container {
+  width: 800px;
+  height: 300px;
+  margin: 0px auto;
+  display: none; }
+
+.gif {
+  width: 200px;
+  margin: 0px auto;
+  float: left; }
+
+#outputWords {
+  text-indent: 30px; }
+
+.hashie {
+  color: #5b5989; }
+
+.about {
+  width: 60%;
+  margin: 0px auto;
+  margin-top: 60px;
+  text-align: center; }
+
+.about-text {
+  font-size: 14px;
+  color: #C0C0C0; }
+  .about-text a {
+    font-size: 14px;
+    color: #a30380; }
+
+.api-credits {
+  width: 505px;
+  margin: 0px auto;
+  margin-top: 34px;
+  margin-bottom: 40px;
+  text-align: center;
+  color: #C0C0C0; }
+
+.tumblr {
+  font-size: 12px;
+  line-height: 12px; }
+
+ul.logos {
+  width: 175px;
+  height: 10px;
+  margin: 0px auto;
+  margin-top: 10px; }
+
+.logos li {
+  padding: 0px;
+  font-size: 12px;
+  float: left; }
+
+.errorMessage {
+  width: 100%;
+  padding: 10px;
+  background-color: #FF0000;
+  font-size: 20px;
+  text-align: center;
+  position: fixed;
+  z-index: 4;
+  display: none; }
+
+.loading {
+  width: 435px;
+  margin: 0px auto;
+  color: #FF0000;
+  font-size: 30px;
+  letter-spacing: 8px;
+  text-transform: uppercase;
+  display: block; }
+
+.hidden {
+  display: none; }
+
+.masterpiece {
+  width: 50%;
+  margin-left: 25%;
+  margin-right: 25%;
+  display: none; }
+
+/*http://cssdeck.com/labs/css3-snow*/
+@-webkit-keyframes snow {
+  0% {
+    background-position: 0px 0px, 0px 0px, 0px 0px; }
+
+  100% {
+    background-position: 500px 1000px, 400px 400px, 300px 300px; } }
+
+@-moz-keyframes snow {
+  0% {
+    background-position: 0px 0px, 0px 0px, 0px 0px; }
+
+  100% {
+    background-position: 500px 1000px, 400px 400px, 300px 300px; } }
+
+@-o-keyframes snow {
+  0% {
+    background-position: 0px 0px, 0px 0px, 0px 0px; }
+
+  100% {
+    background-position: 500px 1000px, 400px 400px, 300px 300px; } }
+
+@keyframes snow {
+  0% {
+    background-position: 0px 0px, 0px 0px, 0px 0px; }
+
+  100% {
+    background-position: 500px 1000px, 400px 400px, 300px 300px; } }
+
+.snowing {
+  -webkit-animation: snow 20s linear infinite;
+  -moz-animation: snow 20s linear infinite;
+  -ms-animation: snow 20s linear infinite;
+  animation: snow 20s linear infinite; }
+
+.xmashat {
+  width: 40px;
+  margin: -20px 0px 0px -20px;
+  position: absolute;
+  z-index: 2; }
+
+#christmasAlbum .album-title:hover {
+  background-color: #FF0000; }
