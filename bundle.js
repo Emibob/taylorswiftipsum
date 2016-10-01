@@ -177,11 +177,15 @@ function _interopRequireDefault(obj) {
             while (counter >= 0 && counter < wordCount - 12) {
                 var randomNumber = parseInt(window.utility.getRandomNumberBtwn(5, 11));
                 counter = counter + randomNumber;
-                //include the next capitalized word 
+                //include the next capitalized word
                 //keep track of what index we're at and make sure it never gets bigger than the array length
                 words[counter] = words[counter] + ".";
                 // add punctuation
                 words[counter + 1] = words[counter + 1].charAt(0).toUpperCase() + words[counter + 1].slice(1);
+                //capitalize the first letter of hashtag if it's the first word of the sentence
+            		if(words[counter+1].charAt(0) == "#"){
+            			words[counter+1] = words[counter+1].slice(0,1) + words[counter+1].charAt(1).toUpperCase() +words[counter+1].slice(2)
+            		}
             }
             //capitalize the first word of paragraph & add punctuation to last word of paragraph
             words[0] = words[0].charAt(0).toUpperCase() + words[0].slice(1);
